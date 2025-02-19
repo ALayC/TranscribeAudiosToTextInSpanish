@@ -28,6 +28,8 @@ class Program
         // Retrieve the Telegram token and OpenAI API key from the configuration.
         string telegramToken = config["TELEGRAM_TOKEN"];
         string openAiApiKey = config["OPENAI_API_KEY"];
+        Console.WriteLine($"TELEGRAM_TOKEN: {Environment.GetEnvironmentVariable("TELEGRAM_TOKEN")}");
+        Console.WriteLine($"OPENAI_API_KEY: {Environment.GetEnvironmentVariable("OPENAI_API_KEY")}");
 
         // Check if the required credentials are available.
         if (string.IsNullOrEmpty(telegramToken) || string.IsNullOrEmpty(openAiApiKey))
