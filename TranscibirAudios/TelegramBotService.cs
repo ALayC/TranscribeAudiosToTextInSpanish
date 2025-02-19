@@ -51,7 +51,9 @@ public class TelegramBotService
         );
 
         Console.WriteLine("The bot has started.");
-        cancellationToken.ThrowIfCancellationRequested();
+
+        // Espera indefinidamente para mantener el proceso en ejecución.
+        await Task.Delay(-1, cancellationToken);
     }
 
     /// <summary>
