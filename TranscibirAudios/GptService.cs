@@ -19,10 +19,10 @@ public class GptService
     }
 
     /// <summary>
-    /// Summarizes the provided text using the OpenAI GPT API.
+    /// Summarizes the provided text using the OpenAI GPT API in Spanish.
     /// </summary>
     /// <param name="text">The text to summarize.</param>
-    /// <returns>A concise summary of the text, or an error message if the summary could not be generated.</returns>
+    /// <returns>A concise summary of the text in Spanish, or an error message if the summary could not be generated.</returns>
     public string SummarizeText(string text)
     {
         // Create a RestClient to connect to the GPT API endpoint.
@@ -33,14 +33,14 @@ public class GptService
         request.AddHeader("Authorization", $"Bearer {_openAiApiKey}");
         request.AddHeader("Content-Type", "application/json");
 
-        // Define the payload for the GPT API call.
+        // Define the payload for the GPT API call in Spanish.
         var payload = new
         {
             model = "gpt-3.5-turbo",
             messages = new object[]
             {
-                new { role = "system", content = "You are an assistant that summarizes texts clearly and concisely." },
-                new { role = "user", content = $"Summarize the following text in a few sentences:\n\n{text}" }
+                new { role = "system", content = "Eres un asistente que resume textos de manera clara y concisa en español." },
+                new { role = "user", content = $"Resume el siguiente texto en pocas oraciones:\n\n{text}" }
             },
             max_tokens = 150,
             temperature = 0.7

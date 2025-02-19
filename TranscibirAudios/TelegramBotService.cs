@@ -89,12 +89,12 @@ public class TelegramBotService
                 if (transcriptionResult != null && !string.IsNullOrWhiteSpace(transcriptionResult.Text))
                 {
                     // Send the transcription to the user
-                    string transcriptionMessage = $"Transcription:\n\n{transcriptionResult.Text}";
+                    string transcriptionMessage = $"Transcripcion:\n\n{transcriptionResult.Text}";
                     await botClient.SendTextMessageAsync(update.Message.Chat.Id, transcriptionMessage, cancellationToken: cancellationToken);
 
                     // Generate a summary using GptService and send it as another message
                     string summary = _gptService.SummarizeText(transcriptionResult.Text);
-                    string summaryMessage = $"Summary:\n\n{summary}";
+                    string summaryMessage = $"Resumen:\n\n{summary}";
                     await botClient.SendTextMessageAsync(update.Message.Chat.Id, summaryMessage, cancellationToken: cancellationToken);
                 }
                 else
