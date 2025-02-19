@@ -69,7 +69,11 @@ public class TelegramBotService
     {
         if (update.Type == UpdateType.Message && update.Message.Type == MessageType.Voice)
         {
-            Console.WriteLine("Voice message received...");
+            // Obtén información del usuario que envió el mensaje
+            var user = update.Message.From;
+            string userInfo = $"User ID: {user.Id}, First Name: {user.FirstName}, Last Name: {user.LastName ?? "N/A"}, Username: {user.Username ?? "N/A"}, Language: {user.LanguageCode ?? "N/A"}";
+            Console.WriteLine("Voice message received from: " + userInfo);
+
             var voice = update.Message.Voice;
             var file = await botClient.GetFileAsync(voice.FileId, cancellationToken);
             string fileUrl = $"https://api.telegram.org/file/bot{_telegramToken}/{file.FilePath}";
@@ -116,6 +120,7 @@ public class TelegramBotService
             await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Please send me a voice message to transcribe.", cancellationToken: cancellationToken);
         }
     }
+
 
     /// <summary>
     /// Handles errors that occur while processing updates.
