@@ -50,8 +50,7 @@ public class TelegramBotService
             cancellationToken: cancellationToken
         );
 
-        Console.WriteLine("The bot has started. Press ENTER to exit.");
-        Console.ReadLine();
+        Console.WriteLine("The bot has started.");
         cancellationToken.ThrowIfCancellationRequested();
     }
 
